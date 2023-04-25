@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
 const uri =
-  'mongodb+srv://bhimiaadmin:BJJ1lne1Yj7O6R2b@cluster0.bxrilfs.mongodb.net/bhimia';
+  'mongodb+srv://tiemirlan2004:TemirlanAsan2004@cluster0.f0l8vno.mongodb.net/bhimia';
 
 const client = new MongoClient(uri);
 
