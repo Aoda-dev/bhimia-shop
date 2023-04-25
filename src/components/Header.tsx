@@ -1,26 +1,34 @@
-import { FiSearch, FiShoppingBag } from 'react-icons/fi';
+import { GpsIcon, LetterIcon } from '@/icons/icons';
 
 type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <div className="flex justify-between items-center py-10">
-      <span className="whitespace-nowrap">Бытовая химия</span>
+    <div className="text-sm">
+      <div className="mainContainer flex justify-between items-center py-5">
+        <div className="flex items-center space-x-14">
+          <div className="flex space-x-4 items-center">
+            <GpsIcon />
+            <span className="-mt-1 inline-block font-medium">
+              г.Алматы, ул. Тимирязева 17
+            </span>
+          </div>
 
-      <div className="flex px-28 space-x-6 w-full justify-center">
-        <input
-          className="bg-gray-100 py-2 border border-stone-300 px-3 text-sm font-medium w-full"
-          placeholder="Поиск по товарам"
-        />
-
-        <button className="bg-slate-800 px-5">
-          <FiSearch className="text-2xl text-white" />
-        </button>
+          <div className="flex space-x-4 items-center">
+            <LetterIcon />
+            <div className="flex flex-col -space-y-1">
+              <span className="font-semibold">opt.shop@mail.ru</span>
+              <span className="font-normal">На связи в любое время</span>
+            </div>
+          </div>
+        </div>
+        <div className="space-x-10 text-gray-700">
+          <a href="#">О компании</a>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Возврат</a>
+          <a href="#">Контакты</a>
+        </div>
       </div>
-
-      <button>
-        <FiShoppingBag className="text-2xl" />
-      </button>
     </div>
   );
 };

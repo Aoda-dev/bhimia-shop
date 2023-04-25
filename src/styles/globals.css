@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mainContainer {
+  @apply container max-w-6xl mx-auto;
+}
+
+.bg-custom-yellow-color {
+  background-color: #ffc85e;
+}
+
+.bg-custom-gray-color {
+  background-color: #ededed;
+}

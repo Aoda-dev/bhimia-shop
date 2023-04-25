@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Products from '@/components/Products';
 import { checkEnv } from '@/helper/checkEnv';
 import { Product } from '@/interfaces/product.interface';
+import SubHeader from '@/components/SubHeader';
 
 interface Props {
   data: Product[];
@@ -14,19 +15,21 @@ const inter = Inter({
   variable: '--font-hero',
 });
 
-export const getServerSideProps = async () => {
-  const res = await fetch(`${checkEnv()}/api/get/getProducts`, {
-    method: 'GET',
-  });
+// export const getServerSideProps = async () => {
+//   const res = await fetch(`${checkEnv()}/api/get/getProducts`, {
+//     method: 'GET',
+//   });
 
-  const data = await res.json();
+//   const data = await res.json();
 
-  return {
-    props: {
-      data,
-    },
-  };
-};
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// };
+
+//birbirbirhsyhajudjsck23
 
 export default function Home(props: Props) {
   return (
@@ -38,7 +41,7 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`font-hero ${inter.variable}`}>
-        <Products products={props.data} />
+        <SubHeader />
       </main>
     </>
   );
