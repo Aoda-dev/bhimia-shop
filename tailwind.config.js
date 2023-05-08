@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         hero: 'var(--font-hero)',
       },
+      colors: {
+        darkGray: '#5C6370',
+      },
     },
   },
   plugins: [],
