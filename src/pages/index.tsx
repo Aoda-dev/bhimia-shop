@@ -5,6 +5,11 @@ import Products from '@/components/Products';
 import { checkEnv } from '@/helper/checkEnv';
 import { Product } from '@/interfaces/product.interface';
 import SubHeader from '@/components/SubHeader';
+import MastHead from '@/components/MastHead';
+import Categories from '@/components/Categories';
+import Footer from '@/components/Footer';
+import Image from 'next/image';
+import { GpsIcon } from '@/icons/icons';
 
 interface Props {
   data: Product[];
@@ -15,23 +20,27 @@ const inter = Inter({
   variable: '--font-hero',
 });
 
-// export const getServerSideProps = async () => {
-//   const res = await fetch(`${checkEnv()}/api/get/getProducts`, {
-//     method: 'GET',
-//   });
+export const getServerSideProps = async () => {
+  const res = await fetch(`${checkEnv()}/api/get/getProducts`, {
+    method: 'GET',
+  });
 
-//   const data = await res.json();
+  const data = await res.json();
 
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// };
+  return {
+    props: {
+      data,
+    },
+  };
+};
 
 //birbirbirhsyhajudjsck23
 
 export default function Home(props: Props) {
+  const { data } = props;
+
+  console.log(data);
+
   return (
     <>
       <Head>
@@ -42,6 +51,57 @@ export default function Home(props: Props) {
       </Head>
       <main className={`font-hero ${inter.variable}`}>
         <SubHeader />
+        <MastHead />
+        <div className="mainContainer py-16 space-y-12">
+          <span className="uppercase text-3xl">
+            <span className="text-custom-yellow-color font-bold">
+              Акционные
+            </span>{' '}
+            товары
+          </span>
+
+          <Products products={data} />
+        </div>
+
+        <Categories />
+
+        <div className="mainContainer relative h-96 my-20">
+          <Image
+            src="/Mapsicle Map.jpg"
+            fill
+            className="object-cover"
+            alt="map"
+          />
+
+          <div className="w-1/2 backdrop-blur-sm space-y-4 p-10 flex flex-col bg-gray-50/50 h-full text-black">
+            <span className="inline-block text-3xl">Контакты</span>
+            <span className="inline-block font-light text-gray-500">
+              Оптовый поставщик «tmrln»
+            </span>
+
+            <div className="flex items-center space-x-2">
+              <GpsIcon />
+              <div className="flex flex-col">
+                <span className="font-medium">Адрес:</span>
+                <span className="text-sm font-light">
+                  г. Алматы, ул. Тимирязева 17{' '}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <GpsIcon />
+              <div className="flex flex-col">
+                <span className="font-medium">Данные налогоплательщика::</span>
+                <span className="text-sm font-light">
+                  ИП TemirlanA.B. ИИН: 040418500366
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Footer />
       </main>
     </>
   );

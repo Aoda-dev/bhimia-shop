@@ -1,13 +1,21 @@
 import { CartIcon, SearchIcon, SquareIcons, SultanIcon } from '@/icons/icons';
+import { Product } from '@/interfaces/product.interface';
+import { useShoppingCart } from '@/state/cartProvider';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 type Props = {};
 
 const SubHeader = (props: Props) => {
+  const { getTotalPrice } = useShoppingCart();
+
   return (
     <div className="border-b border-t border-b-gray-400 border-t-gray-400">
       <div className="mainContainer flex items-center justify-between py-5">
-        <SultanIcon />
+        <Link href="/">
+          <SultanIcon className="fill-gray-800" />
+        </Link>
 
         <button className="text-white flex items-center space-x-2 justify-center px-12 py-[0.8rem] rounded-full bg-custom-yellow-color">
           <span className="font-semibold">Каталог</span>
@@ -51,11 +59,13 @@ const SubHeader = (props: Props) => {
 
         <div className="flex items-center space-x-4 cursor-pointer">
           <div>
-            <CartIcon />
+            <CartIcon className="fill-gray-500" />
           </div>
           <div className="flex flex-col">
             <span className="font-light text-sm">Корзина</span>
-            <span className="font-semibold text-sm">12 456 &#8376;</span>
+            <span className="font-semibold text-sm">
+              {getTotalPrice()} &#8376;
+            </span>
           </div>
         </div>
       </div>
